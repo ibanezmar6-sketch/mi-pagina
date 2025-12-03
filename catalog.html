@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TREE — Catálogo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav container">
+      <a class="brand" href="index.html">
+        <img src="logo.jpeg" alt="TREE logo">
+        <span>TREE</span>
+      </a>
+      <button id="navToggle" class="nav-toggle" aria-label="Abrir menú">☰</button>
+      <nav id="mainNav" class="main-nav" aria-label="Menú principal">
+        <a href="index.html">Inicio</a>
+        <a href="about.html">Sobre Nosotros</a>
+        <a class="active" href="catalog.html">Catálogo</a>
+        <a href="contact.html">Contactos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Catálogo</h2>
+      <div class="catalog-controls">
+        <input id="search" placeholder="Buscar producto..." aria-label="Buscar productos" />
+        <select id="sort" onchange="applySort(this.value)" aria-label="Ordenar">
+          <option value="popular">Más populares</option>
+          <option value="price-asc">Precio ↑</option>
+          <option value="price-desc">Precio ↓</option>
+          <option value="new">Novedades</option>
+        </select>
+        <div class="filters">
+          <button onclick="filterCategory('all')">Todos</button>
+          <button onclick="filterCategory('women')">Mujer</button>
+          <button onclick="filterCategory('men')">Hombre</button>
+          <button onclick="filterCategory('accessories')">Accesorios</button>
+        </div>
+      </div>
+
+      <div id="products" class="grid" aria-live="polite"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
+  </main>
+
+  <!-- Modal producto -->
+  <div id="productModal" class="modal" style="display:none" aria-hidden="true">
+    <div class="modal-inner" role="dialog" aria-modal="true">
+      <button class="modal-close" onclick="closeModal()" aria-label="Cerrar">✕</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <footer class="site-footer"><div class="container">© TREE — Moda sostenible</div></footer>
+
+  <button class="cart-btn" onclick="toggleCart()">🛒 <span id="cart-count">0</span></button>
+  <div id="cartPanel" class="cart-panel" style="display:none"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
